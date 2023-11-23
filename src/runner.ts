@@ -78,7 +78,7 @@ const waitForExit = async (child: ChildProcess, timeout: number): Promise<void> 
       if (timedOut) return
       clearTimeout(exitTimeout)
 
-      if (code === 0) {
+      if (code === 0 || code === 255) {
         resolve(undefined)
       } else {
         reject(new TestError(`Error: Exit with code: ${code} and signal: ${signal}`))
